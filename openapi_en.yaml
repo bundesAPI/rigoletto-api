@@ -1,34 +1,238 @@
-openapi: "3.0.0"
+openapi: "3.0.2"
 info:
   description: "API Description"
   version: "1.0.0"
-  title: "Amtsname: API Name"
+  title: "Umweltbundesamt: Rigoletto API"
 
 servers:
-  - url: "https://warnung.bund.de/api31"
-
+  - url: "https://rigoletto.herokuapp.com/"
 paths:
-  /dashboard/{AGS}.json:
+  "/Export_Tabelle":
     get:
-      summary: Name of endpoint
+      summary: Export Tabelle
+      operationId: Export_Tabelle_Export_Tabelle_get
+      parameters:
+      - required: false
+        schema:
+          title: Kennnummer
+          type: integer
+        name: Kennnummer
+        in: query
+      - required: false
+        schema:
+          title: Kennnummer Greaterthan
+          type: integer
+        name: Kennnummer_greaterThan
+        in: query
+      - required: false
+        schema:
+          title: Kennnummer Greaterthanequal
+          type: integer
+        name: Kennnummer_greaterThanEqual
+        in: query
+      - required: false
+        schema:
+          title: Kennnummer Lessthan
+          type: integer
+        name: Kennnummer_lessThan
+        in: query
+      - required: false
+        schema:
+          title: Kennnummer Lessthanequal
+          type: integer
+        name: Kennnummer_lessThanEqual
+        in: query
+      - required: false
+        schema:
+          title: Einstufungsbezeichnung
+          type: string
+        name: Einstufungsbezeichnung
+        in: query
+      - required: false
+        schema:
+          title: Einstufungsbezeichnung Contains
+          type: string
+        name: Einstufungsbezeichnung_contains
+        in: query
+      - required: false
+        schema:
+          title: Einstufungsbezeichnungenglisch
+          type: string
+        name: EinstufungsbezeichnungEnglisch
+        in: query
+      - required: false
+        schema:
+          title: Einstufungsbezeichnungenglisch Contains
+          type: string
+        name: EinstufungsbezeichnungEnglisch_contains
+        in: query
+      - required: false
+        schema:
+          title: Stoffname
+          type: string
+        name: Stoffname
+        in: query
+      - required: false
+        schema:
+          title: Stoffname Contains
+          type: string
+        name: Stoffname_contains
+        in: query
+      - required: false
+        schema:
+          title: Gruppenname
+          type: string
+        name: Gruppenname
+        in: query
+      - required: false
+        schema:
+          title: Gruppenname Contains
+          type: string
+        name: Gruppenname_contains
+        in: query
+      - required: false
+        schema:
+          title: Cas Nr
+          type: string
+        name: CAS_Nr
+        in: query
+      - required: false
+        schema:
+          title: Cas Nr Contains
+          type: string
+        name: CAS_Nr_contains
+        in: query
+      - required: false
+        schema:
+          title: Eg Nr
+          type: string
+        name: EG_Nr
+        in: query
+      - required: false
+        schema:
+          title: Eg Nr Contains
+          type: string
+        name: EG_Nr_contains
+        in: query
+      - required: false
+        schema:
+          title: Mfaktor
+          type: string
+        name: MFaktor
+        in: query
+      - required: false
+        schema:
+          title: Mfaktor Contains
+          type: string
+        name: MFaktor_contains
+        in: query
+      - required: false
+        schema:
+          title: Synonym
+          type: string
+        name: Synonym
+        in: query
+      - required: false
+        schema:
+          title: Synonym Contains
+          type: string
+        name: Synonym_contains
+        in: query
+      - required: false
+        schema:
+          title: Veröffentlichungsdatum
+          type: string
+        name: Veröffentlichungsdatum
+        in: query
+      - required: false
+        schema:
+          title: Veröffentlichungsdatum Contains
+          type: string
+        name: Veröffentlichungsdatum_contains
+        in: query
+      - required: false
+        schema:
+          title: Wgk
+          type: string
+        name: WGK
+        in: query
+      - required: false
+        schema:
+          title: Wgk Contains
+          type: string
+        name: WGK_contains
+        in: query
+      - required: false
+        schema:
+          title: Fussnoten
+          type: number
+        name: Fussnoten
+        in: query
+      - required: false
+        schema:
+          title: Fussnoten Greaterthan
+          type: number
+        name: Fussnoten_greaterThan
+        in: query
+      - required: false
+        schema:
+          title: Fussnoten Greaterthanequal
+          type: number
+        name: Fussnoten_greaterThanEqual
+        in: query
+      - required: false
+        schema:
+          title: Fussnoten Lessthan
+          type: number
+        name: Fussnoten_lessThan
+        in: query
+      - required: false
+        schema:
+          title: Fussnoten Lessthanequal
+          type: number
+        name: Fussnoten_lessThanEqual
+        in: query
       responses:
         '200':
-            description: OK
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Result'
-      parameters:
-        - in: path
-          required: true
-          name: AGS
-          schema:
-            type: string
-          description: Official area key - can be retrieved from [here](https://www.xrepository.de/api/xrepository/urn:de:bund:destatis:bevoelkerungsstatistik:schluessel:rs_2021-07-31/download/Regionalschl_ssel_2021-07-31.json). The last 7 digits have to be replaced with "0000000" because data is only offered on the area level [Kreisebene](https://de.wikipedia.org/wiki/Amtlicher_Gemeindeschl%C3%BCssel). 
-          example: "example-parameter"
-
-          
-components: 
-    schemas:
-      Result:
-        type: string
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HTTPValidationError"
+components:
+  schemas:
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            "$ref": "#/components/schemas/ValidationError"
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
