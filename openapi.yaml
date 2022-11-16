@@ -2,7 +2,8 @@ openapi: "3.0.2"
 info:
   description: "API Description"
   version: "1.0.0"
-  title: "Umweltbundesamt: Rigoletto API"
+  title: "Rigoletto API"
+  x-office: "Umweltbundesamt"
 
 servers:
   - url: "https://rigoletto.herokuapp.com/"
