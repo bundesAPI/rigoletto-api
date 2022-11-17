@@ -1,7 +1,7 @@
 """
-    Umweltbundesamt: Rigoletto API
+    Rigoletto API
 
-    API Description  # noqa: E501
+    API zum Zugriff der Daten des Webrigolettos, der Informationsseite fuer Wassergefaehrdende Stoffe  # noqa: E501
 
     The version of the OpenAPI document: 1.0.0
     Contact: kontakt@bund.dev

@@ -2,7 +2,7 @@
 [tool.poetry]
 name = "de-rigoletto"
 version = "0.1.0"
-description = "Umweltbundesamt: Rigoletto API"
+description = "Rigoletto API"
 keywords = ["OpenAPI", "OpenAPI-Generator", "rigoletto", "App", "API"]
 homepage = "https://github.com/bundesAPI/rigoletto-api.git"
 authors = ["BundesAPI <kontakt@bund.dev>"]
