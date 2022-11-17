@@ -1,6 +1,6 @@
 openapi: "3.0.2"
 info:
-  description: "API Description"
+  description: "API zum Zugriff der Daten des Webrigolettos, der Informationsseite fuer Wassergefaehrdende Stoffe"
   version: "1.0.0"
   title: "Rigoletto API"
   x-office: "Umweltbundesamt"
